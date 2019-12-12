@@ -5,7 +5,7 @@ import hometask5.transportation.Transportation;
 
 import java.util.Arrays;
 
-public class Carrier implements Cloneable {
+public class Carrier {
     private boolean fragileAvailable;
     private Long id;
     private String name;
@@ -64,14 +64,4 @@ public class Carrier implements Cloneable {
         this.carrierType = carrierType;
     }
 
-    @Override
-    public Object clone() throws CloneNotSupportedException {
-        Carrier newCarrier = new Carrier();
-        newCarrier.setCarrierType(this.carrierType);
-        newCarrier.setName(this.name);
-        newCarrier.setId();
-        newCarrier.setAddress(this.address);
-        newCarrier.setFragileAvailable(this.isFragileAvailable());
-        return newCarrier;
-    }
 }

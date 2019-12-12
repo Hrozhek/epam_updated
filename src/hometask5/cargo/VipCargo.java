@@ -11,15 +11,5 @@ public class VipCargo extends Cargo {
 
     @Override
     public void setTransportations(Transportation[] transportations) {
-        boolean carrierIsCorrect = true;
-        for (Transportation transportation : transportations) {
-            if (transportation.getCarrier().getCarrierType() != CarrierType.PLANE) {
-                carrierIsCorrect = false;
-                System.out.println("Transportation cannot be initialized with this type of carrier, plane required");
-            }
-        }
-        if (carrierIsCorrect) {
-            super.setTransportations(transportations);
-        }
     }
 }

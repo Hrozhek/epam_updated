@@ -7,9 +7,8 @@ import hometask5.transportation.*;
 import java.util.Date;
 
 public class Demo {
-    //While we can't catch exception it will throw it to JVM
-    public static void main(String[] args) throws CloneNotSupportedException {
-        
+    public static void main(String[] args) {
+
 
         Cargo apple = new Cargo();
         apple.setName("Apple");
@@ -62,14 +61,6 @@ public class Demo {
         transportation3.setDate(new Date());
         Storage.addTransportation(transportation3);
 
-        Transportation transportation4 = (Transportation) transportation2.clone();
-        Storage.addTransportation(transportation4);
-        Transportation transportation5 = (Transportation) transportation2.clone();
-        Storage.addTransportation(transportation5);
-        Transportation transportation6 = (Transportation) transportation2.clone();
-        Storage.addTransportation(transportation6);
-        Storage.addTransportation(null);
-
         Storage.printAllCargos();
         Storage.printAllCarriers();
         Storage.printAllTransportations();
@@ -83,9 +74,11 @@ public class Demo {
         System.out.println("Test getCarrierById, pdp must be shown");
         Long testId = pdp.getId();
         System.out.println(Storage.getCarrierById(testId));
-
-        System.out.println("Test getCargoByName, first entry of macbook must be shown");
+        Storage.addCargo(macBook);
+        System.out.println("Test getCargoByName, macbooks must be shown");
         String testName = macBook.getName();
-        System.out.println(Storage.getCargoByName(testName));
+        for (Cargo cargo : Storage.getCargosByName(testName)) {
+            System.out.println(cargo);
+        }
     }
 }

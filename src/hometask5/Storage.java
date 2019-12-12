@@ -7,8 +7,9 @@ import hometask5.transportation.*;
 
 
 public final class Storage {
-    private Storage(){
+    private Storage() {
     }
+
     private static final int ARRAY_START_CAPACITY = 10;
     private static Cargo[] cargos = new Cargo[ARRAY_START_CAPACITY];
     private static int cargoIndex = 0;
@@ -91,15 +92,17 @@ public final class Storage {
         return null;
     }
 
-    public static Cargo getCargoByName(String name) {
+    public static Cargo[] getCargosByName(String name) {
+        Cargo[] cargosWithGivenName = new Cargo[cargos.length];
+        int iterator = 0;
         for (Cargo cargo : cargos) {
-            if (cargo != null && cargo.getName() != null) {
-                if (cargo.getName().equals(name)) {
-                    return cargo;
-                }
+            if (cargo != null && cargo.getName() != null && cargo.getName().equals(name)) {
+                cargosWithGivenName[iterator++] = cargo;
             }
         }
-        return null;
+        Cargo [] arrayWithoutNulls = new Cargo[iterator];
+        deleteNullsFromArray(cargosWithGivenName, arrayWithoutNulls);
+        return arrayWithoutNulls;
     }
 
     public static Transportation getTransportationById(Long id) {
@@ -124,48 +127,42 @@ public final class Storage {
         return null;
     }
 
-    public static Carrier getCarrierByName(String name) {
+    public static Carrier[] getCarrierByName(String name) {
+        Carrier[] carriersWithGivenName = new Carrier[cargos.length];
+        int iterator = 0;
         for (Carrier carrier : carriers) {
-            if (carrier != null && carrier.getName() != null) {
-                if (carrier.getName().equals(name)) {
-                    return carrier;
-                }
+            if (carrier != null && carrier.getName() != null && carrier.getName().equals(name)) {
+                carriersWithGivenName[iterator++] = carrier;
             }
         }
-        return null;
+        Carrier [] arrayWithoutNulls = new Carrier[iterator];
+        deleteNullsFromArray(carriersWithGivenName,arrayWithoutNulls);
+        return carriersWithGivenName;
     }
 
     public static Cargo[] getAllCargos() {
-        Cargo[] newCargos = new Cargo[positionWhereIsFirstNull(cargos)];
-        copyArray(cargos, newCargos);
-        return newCargos;
+        return cargos;
     }
 
     public static Transportation[] getAllTransportations() {
-        Transportation[] newTransportations = new Transportation[positionWhereIsFirstNull(transportations)];
-        copyArray(transportations, newTransportations);
-        return newTransportations;
+        return transportations;
     }
 
     public static Carrier[] getAllCarriers() {
-        Carrier[] newCarriers = new Carrier[positionWhereIsFirstNull(carriers)];
-        copyArray(carriers, newCarriers);
-        return newCarriers;
+        return carriers;
     }
 
     private static void copyArray(Object[] src, Object[] dest) {
+        for (int i = 0; i < src.length; i++) {
+            dest[i] = src[i];
+        }
+    }
+
+    private static void deleteNullsFromArray(Object[] src, Object[] dest) {
         for (int i = 0; i < src.length; i++) {
             if (src[i] != null) {
                 dest[i] = src[i];
             }
         }
-    }
-
-    private static int positionWhereIsFirstNull(Object[] src) {
-        int currentPosition = 0;
-        while (src[currentPosition] != null && currentPosition < src.length) {
-            currentPosition++;
-        }
-        return currentPosition;
     }
 }
