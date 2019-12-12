@@ -5,12 +5,12 @@ import hometask5.transportation.Transportation;
 
 import java.util.Arrays;
 
-public class Carrier {
+public class Carrier implements Cloneable {
+    private boolean fragileAvailable;
     private Long id;
     private String name;
     private String address;
     private CarrierType carrierType;
-    private Transportation[] transportations;
 
     public Long getId() {
         return id;
@@ -23,8 +23,15 @@ public class Carrier {
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", carrierType=" + carrierType +
-                ", transportations=" + Arrays.toString(transportations) +
                 '}';
+    }
+
+    public boolean isFragileAvailable() {
+        return fragileAvailable;
+    }
+
+    public void setFragileAvailable(boolean fragileAvailable) {
+        this.fragileAvailable = fragileAvailable;
     }
 
     public void setId() {
@@ -57,11 +64,14 @@ public class Carrier {
         this.carrierType = carrierType;
     }
 
-    public Transportation[] getTransportations() {
-        return transportations;
-    }
-
-    public void setTransportations(Transportation[] transportations) {
-        this.transportations = transportations;
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        Carrier newCarrier = new Carrier();
+        newCarrier.setCarrierType(this.carrierType);
+        newCarrier.setName(this.name);
+        newCarrier.setId();
+        newCarrier.setAddress(this.address);
+        newCarrier.setFragileAvailable(this.isFragileAvailable());
+        return newCarrier;
     }
 }

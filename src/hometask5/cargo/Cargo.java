@@ -6,7 +6,7 @@ import hometask5.transportation.*;
 
 import java.util.Arrays;
 
-public class Cargo {
+public class Cargo implements Cloneable {
     private Long id;
     private String name;
     private int weight;
@@ -64,5 +64,16 @@ public class Cargo {
 
     public void setTransportations(Transportation[] transportations) {
         this.transportations = transportations;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        Cargo newCargo = new Cargo();
+        newCargo.setId();
+        newCargo.setName(this.name);
+        newCargo.setCargoType(this.cargoType);
+        newCargo.setWeight(this.weight);
+        newCargo.setTransportations(this.getTransportations());
+        return  newCargo;
     }
 }

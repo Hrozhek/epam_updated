@@ -7,7 +7,7 @@ import hometask5.carrier.*;
 import java.util.Date;
 
 
-public class Transportation {
+public class Transportation implements Cloneable {
     private Long id;
     private Cargo cargo;
     private Carrier carrier;
@@ -76,5 +76,19 @@ public class Transportation {
 
     public void setCarrier(Carrier carrier) {
         this.carrier = carrier;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        Transportation newTransportation = new Transportation();
+        newTransportation.setId();
+        newTransportation.setBillTo(this.billTo);
+        newTransportation.setCargo((Cargo) this.getCargo().clone());
+        newTransportation.setCarrier((Carrier) this.getCarrier().clone());
+        newTransportation.setDescription(this.description);
+        if (this.date != null) {
+            newTransportation.setDate(new Date(this.date.getYear(), this.date.getMonth(), this.date.getDate()));
+        }
+        return newTransportation;
     }
 }
