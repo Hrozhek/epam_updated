@@ -6,7 +6,9 @@ import hometask5.carrier.*;
 import hometask5.transportation.*;
 
 
-public class Storage {
+public final class Storage {
+    private Storage(){
+    }
     private static final int ARRAY_START_CAPACITY = 10;
     private static Cargo[] cargos = new Cargo[ARRAY_START_CAPACITY];
     private static int cargoIndex = 0;
@@ -81,7 +83,7 @@ public class Storage {
     public static Cargo getCargoById(Long id) {
         for (Cargo cargo : cargos) {
             if (cargo != null) {
-                if (cargo.getId() == id) {
+                if (cargo.getId().equals(id)) {
                     return cargo;
                 }
             }
@@ -92,7 +94,7 @@ public class Storage {
     public static Cargo getCargoByName(String name) {
         for (Cargo cargo : cargos) {
             if (cargo != null && cargo.getName() != null) {
-                if (cargo.getName() == name) {
+                if (cargo.getName().equals(name)) {
                     return cargo;
                 }
             }
@@ -103,7 +105,7 @@ public class Storage {
     public static Transportation getTransportationById(Long id) {
         for (Transportation transportation : transportations) {
             if (transportation != null) {
-                if (transportation.getId() == id) {
+                if (transportation.getId().equals(id)) {
                     return transportation;
                 }
             }
@@ -114,7 +116,7 @@ public class Storage {
     public static Carrier getCarrierById(Long id) {
         for (Carrier carrier : carriers) {
             if (carrier != null) {
-                if (carrier.getId() == id) {
+                if (carrier.getId().equals(id)) {
                     return carrier;
                 }
             }
@@ -125,7 +127,7 @@ public class Storage {
     public static Carrier getCarrierByName(String name) {
         for (Carrier carrier : carriers) {
             if (carrier != null && carrier.getName() != null) {
-                if (carrier.getName() == name) {
+                if (carrier.getName().equals(name)) {
                     return carrier;
                 }
             }
