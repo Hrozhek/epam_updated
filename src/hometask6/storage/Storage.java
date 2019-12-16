@@ -75,7 +75,7 @@ public class Storage {
     public static void printAllCarriers() {
         ArrayUtils.printArray(carriers);
     }
-    
+
     public static void printAllTransportations() {
         ArrayUtils.printArray(transportations);
     }

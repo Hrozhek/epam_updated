@@ -1,8 +1,8 @@
-package hometask6.cargo.domain.cargorepo;
+package hometask6.cargo.service;
 
 import hometask6.cargo.domain.Cargo;
 
-public interface CargoRepo {
+public interface CargoService {
     void addCargo(Cargo cargo);
 
     Cargo getCargoById(Long id);

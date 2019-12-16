@@ -1,4 +1,4 @@
-package hometask6.transportation.domain.transportationrepo;
+package hometask6.transportation.repo;
 
 import hometask6.common.utils.ArrayUtils;
 import hometask6.storage.IdGenerator;

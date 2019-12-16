@@ -1,4 +1,4 @@
-package hometask6.cargo.domain.cargoservice;
+package hometask6.cargo.service;
 
 import hometask6.cargo.domain.Cargo;
 

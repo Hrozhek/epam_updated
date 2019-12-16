@@ -1,8 +1,8 @@
-package hometask6.transportation.domain.transportationservice;
+package hometask6.transportation.repo;
 
 import hometask6.transportation.domain.Transportation;
 
-public interface TransportationService {
+public interface TransportationRepo {
     void addTransportation(Transportation transportation);
 
     Transportation getTransportationById(Long id);

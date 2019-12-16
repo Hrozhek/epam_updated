@@ -1,4 +1,4 @@
-package hometask6.carrier.domain.carrierrepo;
+package hometask6.carrier.repo;
 
 import hometask6.carrier.domain.Carrier;
 import hometask6.common.utils.ArrayUtils;

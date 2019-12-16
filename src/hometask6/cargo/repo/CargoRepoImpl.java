@@ -1,4 +1,4 @@
-package hometask6.cargo.domain.cargorepo;
+package hometask6.cargo.repo;
 
 import hometask6.cargo.domain.Cargo;
 import hometask6.common.utils.ArrayUtils;

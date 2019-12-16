@@ -1,4 +1,4 @@
-package hometask6.transportation.domain.transportationservice;
+package hometask6.transportation.service;
 
 import hometask6.transportation.domain.Transportation;
 

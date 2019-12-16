@@ -1,4 +1,4 @@
-package hometask6.carrier.domain.carrierservice;
+package hometask6.carrier.service;
 
 import hometask6.carrier.domain.Carrier;
 
