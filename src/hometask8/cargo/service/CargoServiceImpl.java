@@ -1,9 +1,7 @@
-package hometask7.cargo.service;
+package hometask8.cargo.service;
 
-import hometask7.cargo.domain.Cargo;
-import hometask7.cargo.repo.CargoArrayRepoImpl;
-import hometask7.cargo.repo.CargoCollectionRepoImpl;
-import hometask7.cargo.repo.CargoRepo;
+import hometask8.cargo.domain.Cargo;
+import hometask8.cargo.repo.CargoRepo;
 
 public class CargoServiceImpl implements CargoService {
     private CargoRepo repo;

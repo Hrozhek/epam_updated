@@ -1,24 +1,24 @@
-package hometask7;
+package hometask8;
 
 
-import hometask7.cargo.repo.CargoCollectionRepoImpl;
-import hometask7.cargo.repo.CargoRepo;
-import hometask7.cargo.service.CargoService;
-import hometask7.cargo.service.CargoServiceImpl;
-import hometask7.carrier.repo.CarrierCollectionRepoImpl;
-import hometask7.carrier.repo.CarrierRepo;
-import hometask7.carrier.service.CarrierService;
-import hometask7.carrier.service.CarrierServiceImpl;
-import hometask7.transportation.repo.TransportationCollectionRepoImpl;
-import hometask7.transportation.repo.TransportationRepo;
-import hometask7.transportation.service.TransportationService;
-import hometask7.cargo.domain.Cargo;
-import hometask7.cargo.domain.ClothesCargo;
-import hometask7.cargo.domain.FoodCargo;
-import hometask7.carrier.domain.Carrier;
-import hometask7.carrier.domain.CarrierType;
-import hometask7.transportation.domain.Transportation;
-import hometask7.transportation.service.TransportationServiceImpl;
+import hometask8.cargo.domain.Cargo;
+import hometask8.cargo.domain.ClothesCargo;
+import hometask8.cargo.domain.FoodCargo;
+import hometask8.cargo.repo.CargoCollectionRepoImpl;
+import hometask8.cargo.repo.CargoRepo;
+import hometask8.cargo.service.CargoService;
+import hometask8.cargo.service.CargoServiceImpl;
+import hometask8.carrier.domain.Carrier;
+import hometask8.carrier.domain.CarrierType;
+import hometask8.carrier.repo.CarrierCollectionRepoImpl;
+import hometask8.carrier.repo.CarrierRepo;
+import hometask8.carrier.service.CarrierService;
+import hometask8.carrier.service.CarrierServiceImpl;
+import hometask8.transportation.domain.Transportation;
+import hometask8.transportation.repo.TransportationCollectionRepoImpl;
+import hometask8.transportation.repo.TransportationRepo;
+import hometask8.transportation.service.TransportationService;
+import hometask8.transportation.service.TransportationServiceImpl;
 
 import java.util.Date;
 

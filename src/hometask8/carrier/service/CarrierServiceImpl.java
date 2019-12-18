@@ -1,9 +1,7 @@
-package hometask7.carrier.service;
+package hometask8.carrier.service;
 
-import hometask7.carrier.domain.Carrier;
-import hometask7.carrier.repo.CarrierArrayRepoImpl;
-import hometask7.carrier.repo.CarrierCollectionRepoImpl;
-import hometask7.carrier.repo.CarrierRepo;
+import hometask8.carrier.domain.Carrier;
+import hometask8.carrier.repo.CarrierRepo;
 
 public class CarrierServiceImpl implements CarrierService {
     private CarrierRepo repo;

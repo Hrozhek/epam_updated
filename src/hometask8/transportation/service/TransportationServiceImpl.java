@@ -1,9 +1,7 @@
-package hometask7.transportation.service;
+package hometask8.transportation.service;
 
-import hometask7.transportation.domain.Transportation;
-import hometask7.transportation.repo.TransportationArrayRepoImpl;
-import hometask7.transportation.repo.TransportationCollectionRepoImpl;
-import hometask7.transportation.repo.TransportationRepo;
+import hometask8.transportation.domain.Transportation;
+import hometask8.transportation.repo.TransportationRepo;
 
 public class TransportationServiceImpl implements TransportationService {
     private TransportationRepo repo;
