@@ -5,6 +5,8 @@ import hometask8.common.utils.ArrayUtils;
 import hometask8.storage.IdGenerator;
 import hometask8.storage.Storage;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -21,6 +23,11 @@ public class CargoArrayRepoImpl implements CargoRepo {
             ArrayUtils.copyArray(Storage.cargos, newCargos);
             Storage.cargos = newCargos;
         }
+    }
+
+    @Override
+    public boolean update(Cargo cargo) {
+        return false;
     }
 
     @Override
@@ -63,6 +70,10 @@ public class CargoArrayRepoImpl implements CargoRepo {
         Cargo[] trimmedResult = new Cargo[cargosHaveSameName];
         ArrayUtils.trimArray(result, trimmedResult);
         return trimmedResult;
+    }
+
+    public List<Cargo> getAll(){
+        return Arrays.asList(Storage.cargos);
     }
 
     private Integer getPositionByCargo(Cargo cargo) {

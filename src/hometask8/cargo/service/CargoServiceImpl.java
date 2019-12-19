@@ -3,6 +3,10 @@ package hometask8.cargo.service;
 import hometask8.cargo.domain.Cargo;
 import hometask8.cargo.repo.CargoRepo;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+
 public class CargoServiceImpl implements CargoService {
     private CargoRepo repo;
 
@@ -51,4 +55,29 @@ public class CargoServiceImpl implements CargoService {
         }
         return cargoWithReceivedName;
     }
+
+    public void sortByName() {
+        Collections.sort(repo.getAll(), new CargoNameComparator());
+    }
+
+    public void sortByWeight() {
+        Collections.sort(repo.getAll(), new CargoWeightComparator());
+    }
+
+    public void sortByNameAndWeight() {
+        Collections.sort(repo.getAll(), new CargoNameComparator().thenComparing(new CargoWeightComparator()));
+    }
+
+    private class CargoNameComparator implements Comparator<Cargo> {
+        public int compare(Cargo o1, Cargo o2) {
+            return o1.getName().compareTo(o2.getName());
+        }
+    }
+
+    private class CargoWeightComparator implements Comparator<Cargo> {
+        public int compare(Cargo o1, Cargo o2) {
+            return Double.compare(o1.getWeight(), o2.getWeight());
+        }
+    }
+    
 }

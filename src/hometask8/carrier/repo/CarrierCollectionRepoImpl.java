@@ -5,6 +5,8 @@ import hometask8.common.utils.ArrayUtils;
 import hometask8.storage.IdGenerator;
 import hometask8.storage.Storage;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class CarrierCollectionRepoImpl implements CarrierRepo {
@@ -15,7 +17,7 @@ public class CarrierCollectionRepoImpl implements CarrierRepo {
 
     @Override
     public Carrier getById(Long id) {
-        for (Carrier carrier: Storage.carrierList) {
+        for (Carrier carrier : Storage.carrierList) {
             if (carrier != null && Long.valueOf(id).equals(carrier.getId())) {
                 return carrier;
             }
@@ -31,16 +33,15 @@ public class CarrierCollectionRepoImpl implements CarrierRepo {
 
     @Override
     public Carrier[] getByName(String name) {
-        Carrier[] nonTrimmedArray = new Carrier[Storage.carrierList.size()];
-        int quantity = 0;
-        for (Carrier carrier: Storage.carrierList) {
+        List<Carrier> carrieresWithGivenName = new ArrayList<>();
+
+        for (Carrier carrier : Storage.carrierList) {
             if (carrier != null && Objects.equals(carrier.getName(), name)) {
-                nonTrimmedArray[quantity++] = carrier;
+                carrieresWithGivenName.add(carrier);
             }
         }
-        Carrier[] trimmedArray = new Carrier[quantity];
-        ArrayUtils.trimArray(nonTrimmedArray, trimmedArray);
-        return trimmedArray;
+        return (Carrier[]) carrieresWithGivenName.toArray();
     }
+
 
 }

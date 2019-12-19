@@ -1,17 +1,21 @@
 package hometask8.cargo.repo;
 
 import hometask8.cargo.domain.Cargo;
-import hometask8.common.utils.ArrayUtils;
 import hometask8.storage.IdGenerator;
 import hometask8.storage.Storage;
 
-import java.util.Objects;
+import java.util.*;
 
 public class CargoCollectionRepoImpl implements CargoRepo {
     @Override
     public void add(Cargo cargo) {
         cargo.setId(IdGenerator.generateId());
         Storage.cargoList.add(cargo);
+    }
+
+    @Override
+    public boolean update(Cargo cargo) {
+        return false;
     }
 
     @Override
@@ -32,15 +36,19 @@ public class CargoCollectionRepoImpl implements CargoRepo {
 
     @Override
     public Cargo[] getByName(String name) {
-        Cargo[] nonTrimmedArray = new Cargo[Storage.cargoList.size()];
-        int quantity = 0;
+        List<Cargo> cargoesWithGivenName = new ArrayList<>();
+
+
         for (Cargo cargo: Storage.cargoList) {
             if (cargo != null && Objects.equals(cargo.getName(), name)) {
-                nonTrimmedArray[quantity++] = cargo;
+                cargoesWithGivenName.add(cargo);
             }
         }
-        Cargo[] trimmedArray = new Cargo[quantity];
-        ArrayUtils.trimArray(nonTrimmedArray, trimmedArray);
-        return trimmedArray;
+        return (Cargo[]) cargoesWithGivenName.toArray();
+    }
+
+    @Override
+    public List<Cargo> getAll() {
+        return Storage.cargoList;
     }
 }

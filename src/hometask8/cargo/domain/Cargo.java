@@ -9,7 +9,7 @@ import java.util.Objects;
 public abstract class Cargo extends BaseEntity {
 
     protected String name;
-    protected int weight;
+    protected double weight;
     protected Transportation[] transportations;
     protected CargoType cargoType;
 
@@ -27,7 +27,7 @@ public abstract class Cargo extends BaseEntity {
         this.name = name;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
