@@ -56,14 +56,17 @@ public class CargoServiceImpl implements CargoService {
         return cargoWithReceivedName;
     }
 
+    @Override
     public void sortByName() {
         Collections.sort(repo.getAll(), new CargoNameComparator());
     }
 
+    @Override
     public void sortByWeight() {
         Collections.sort(repo.getAll(), new CargoWeightComparator());
     }
 
+    @Override
     public void sortByNameAndWeight() {
         Collections.sort(repo.getAll(), new CargoNameComparator().thenComparing(new CargoWeightComparator()));
     }
@@ -79,5 +82,5 @@ public class CargoServiceImpl implements CargoService {
             return Double.compare(o1.getWeight(), o2.getWeight());
         }
     }
-    
+
 }
