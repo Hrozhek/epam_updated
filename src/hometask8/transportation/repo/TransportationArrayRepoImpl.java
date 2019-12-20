@@ -45,7 +45,11 @@ public class TransportationArrayRepoImpl implements TransportationRepo {
         }
         return isDeleted;
     }
-
+    
+    public boolean update(Transportation transportation) {
+        return false;
+    }
+    
     private Integer getPositionByTransportation(Transportation transportation) {
         Integer position = null;
         for (int i = 0; (position == null) && (i < Storage.transportations.length); i++) {
