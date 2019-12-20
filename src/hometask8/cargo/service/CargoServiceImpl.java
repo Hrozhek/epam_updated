@@ -64,7 +64,7 @@ public class CargoServiceImpl implements CargoService {
     }
 
     @Override
-    public void sortByNamet() {
+    public void sortByWeight() {
         Collections.sort(repo.getAll(), new CargoWeightComparator());
     }
 
