@@ -8,5 +8,7 @@ public interface TransportationRepo {
     Transportation getById(Long id);
 
     boolean deleteById(Long id);
-
+    
+    boolean update(Transportation transportation);
+    
 }
