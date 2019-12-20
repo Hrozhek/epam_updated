@@ -8,6 +8,8 @@ public interface CarrierRepo {
     Carrier getById(Long id);
 
     boolean deleteById(Long id);
+    
+    boolean update(Carrier carrier)
 
-     Carrier[] getByName(String name);
+    Carrier[] getByName(String name);
 }
