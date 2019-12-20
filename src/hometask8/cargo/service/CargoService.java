@@ -12,10 +12,6 @@ public interface CargoService {
     void deleteById(Long id);
 
     Cargo[] getByName(String name);
-
-    List<Cargo> getSortedByName();
-
-    List<Cargo> getSortedByWeight();
-
-    List<Cargo> getSortedByNameAndWeight();
+    
+    List<Array> getSortedCargos();
 }
