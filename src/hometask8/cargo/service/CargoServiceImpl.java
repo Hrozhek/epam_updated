@@ -58,13 +58,15 @@ public class CargoServiceImpl implements CargoService {
     
     @Override
     public List<Array> getSortedCargos(Comparator<Cargo> comparator) {
-        Collections.sort(repo.getAll(), comparator);
-        return repo.getAll();
+        List<Cargo> cargos = repo.getAll();
+        Collections.sort(cargos, comparator);
+        return cargos;
     }
     
     public List<Array> getSortedCargos(Comparator<Cargo> firstComparator, Comparator<Cargo> secondComparator) {
-        Collections.sort(repo.getAll(), firstComparator.thenComparing(secondComparator));
-        return repo.getAll();
+        List<Cargo> cargos = repo.getAll();
+        Collections.sort(cargos, firstComparator.thenComparing(secondComparator));
+        return cargos;
     }
 
     public class CargoNameComparator implements Comparator<Cargo> {
