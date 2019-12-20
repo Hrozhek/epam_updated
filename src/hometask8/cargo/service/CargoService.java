@@ -13,9 +13,9 @@ public interface CargoService {
 
     Cargo[] getByName(String name);
 
-    void sortByName();
+    List<Cargo> getSortedByName();
 
-    void sortByWeight();
+    List<Cargo> getSortedByWeight();
 
-    void sortByNameAndWeight();
+    List<Cargo> getSortedByNameAndWeight();
 }
