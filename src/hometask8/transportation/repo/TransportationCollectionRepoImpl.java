@@ -25,5 +25,9 @@ public class TransportationCollectionRepoImpl implements TransportationRepo {
         Transportation foundTransportation = this.getById(id);
         return Storage.transportationList.remove(foundTransportation);
     }
+    
+    public boolean update(Transportation transportation) {
+        return false;
+    }
 
 }
