@@ -46,6 +46,10 @@ public class CarrierArrayRepoImpl implements CarrierRepo {
         }
         return isDeleted;
     }
+    
+    public boolean update(Carrier carrier) {
+        return false;
+    }
 
     @Override
     public Carrier[] getByName(String name) {
