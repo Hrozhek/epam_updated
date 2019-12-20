@@ -56,22 +56,21 @@ public class CargoServiceImpl implements CargoService {
         return cargoWithReceivedName;
     }
 
+    public List<Array> getSortedCargos(){
+        switch
     @Override
-    public List<Cargo> getSortedByName() {
+    public void sortedByName() {
         Collections.sort(repo.getAll(), new CargoNameComparator());
-        return repo.getAll();
     }
 
     @Override
-    public List<Cargo> getSortedByWeight() {
+    public void sortByNamet() {
         Collections.sort(repo.getAll(), new CargoWeightComparator());
-        return repo.getAll();
     }
 
     @Override
-    public List<Cargo> getSortedByNameAndWeight() {
+    public void sortByNameAndWeight() {
         Collections.sort(repo.getAll(), new CargoNameComparator().thenComparing(new CargoWeightComparator()));
-        return repo.getAll();
     }
 
     private class CargoNameComparator implements Comparator<Cargo> {
