@@ -59,7 +59,7 @@ public class CargoServiceImpl implements CargoService {
     public List<Array> getSortedCargos(){
         switch
     @Override
-    public void sortedByName() {
+    public void sortByName() {
         Collections.sort(repo.getAll(), new CargoNameComparator());
     }
 
