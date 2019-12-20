@@ -55,31 +55,25 @@ public class CargoServiceImpl implements CargoService {
         }
         return cargoWithReceivedName;
     }
-
-    public List<Array> getSortedCargos(){
-        switch
+    
     @Override
-    public void sortByName() {
-        Collections.sort(repo.getAll(), new CargoNameComparator());
+    public List<Array> getSortedCargos(Comparator<Cargo> comparator) {
+        Collections.sort(repo.getAll(), comparator);
+        return repo.getAll();
+    }
+    
+    public List<Array> getSortedCargos(Comparator<Cargo> firstComparator, Comparator<Cargo> secondComparator) {
+        Collections.sort(repo.getAll(), firstComparator.thenComparing(secondComparator));
+        return repo.getAll();
     }
 
-    @Override
-    public void sortByWeight() {
-        Collections.sort(repo.getAll(), new CargoWeightComparator());
-    }
-
-    @Override
-    public void sortByNameAndWeight() {
-        Collections.sort(repo.getAll(), new CargoNameComparator().thenComparing(new CargoWeightComparator()));
-    }
-
-    private class CargoNameComparator implements Comparator<Cargo> {
+    public class CargoNameComparator implements Comparator<Cargo> {
         public int compare(Cargo o1, Cargo o2) {
             return o1.getName().compareTo(o2.getName());
         }
     }
 
-    private class CargoWeightComparator implements Comparator<Cargo> {
+    public class CargoWeightComparator implements Comparator<Cargo> {
         public int compare(Cargo o1, Cargo o2) {
             return Double.compare(o1.getWeight(), o2.getWeight());
         }
