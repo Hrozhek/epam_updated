@@ -30,7 +30,11 @@ public class CarrierCollectionRepoImpl implements CarrierRepo {
         Carrier foundCarrier = this.getById(id);
         return Storage.carrierList.remove(foundCarrier);
     }
-
+    
+    public boolean update(Carrier carrier) {
+        return false;
+    }
+    
     @Override
     public Carrier[] getByName(String name) {
         List<Carrier> carrieresWithGivenName = new ArrayList<>();
