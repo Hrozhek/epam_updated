@@ -1,6 +1,8 @@
-package hometask8.carrier.repo;
+package hometask9.carrier.repo;
 
-import hometask8.carrier.domain.Carrier;
+import hometask9.carrier.domain.Carrier;
+
+import java.util.List;
 
 public interface CarrierRepo {
     void add(Carrier carrier);
@@ -12,4 +14,6 @@ public interface CarrierRepo {
     boolean update(Carrier carrier);
 
     Carrier[] getByName(String name);
+
+    List<Carrier> getAll();
 }

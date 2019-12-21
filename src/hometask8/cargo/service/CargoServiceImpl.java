@@ -6,6 +6,7 @@ import hometask8.cargo.repo.CargoRepo;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class CargoServiceImpl implements CargoService {
     private CargoRepo repo;
@@ -57,13 +58,13 @@ public class CargoServiceImpl implements CargoService {
     }
     
     @Override
-    public List<Array> getSortedCargos(Comparator<Cargo> comparator) {
+    public List<Cargo> getSortedCargos(Comparator<Cargo> comparator) {
         List<Cargo> cargos = repo.getAll();
         Collections.sort(cargos, comparator);
         return cargos;
     }
     
-    public List<Array> getSortedCargos(Comparator<Cargo> firstComparator, Comparator<Cargo> secondComparator) {
+    public List<Cargo> getSortedCargos(Comparator<Cargo> firstComparator, Comparator<Cargo> secondComparator) {
         List<Cargo> cargos = repo.getAll();
         Collections.sort(cargos, firstComparator.thenComparing(secondComparator));
         return cargos;

@@ -3,6 +3,8 @@ package hometask8.cargo.service;
 import hometask8.cargo.domain.Cargo;
 
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public interface CargoService {
     void add(Cargo cargo);
@@ -13,5 +15,5 @@ public interface CargoService {
 
     Cargo[] getByName(String name);
     
-    List<Array> getSortedCargos();
+    List<Cargo> getSortedCargos(Comparator<Cargo> comparator);
 }
