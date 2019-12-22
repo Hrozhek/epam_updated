@@ -80,12 +80,13 @@ public class CargoServiceImpl implements CargoService {
         List<Cargo> cargos = repo.getAll();
         if (cargoSortsCondition.needSorting()) {
             ArrayList<CargoSortFields> cargoSortFields = new ArrayList(cargoSortsCondition.getSortFields());
+            boolean needReverse = cargoSortsCondition.isOrderReversed();
             if (cargoSortFields.size() == 1) {
-                Collections.sort(cargos, getComparatorForCargoFields(cargoSortFields.get(0)));
+                Collections.sort(cargos, getComparatorWithRightOrder(cargoSortFields.get(0), needReverse));
             } else if (cargoSortFields.size() == 2) {
                 Collections.sort(cargos,
-                        getComparatorForCargoFields(cargoSortFields.get(0)).thenComparing
-                                (getComparatorForCargoFields(cargoSortFields.get(1))));
+                        getComparatorWithRightOrder(cargoSortFields.get(0), needReverse).thenComparing
+                                (getComparatorWithRightOrder(cargoSortFields.get(1), needReverse)));
             }
         }
         return cargos;
@@ -98,6 +99,15 @@ public class CargoServiceImpl implements CargoService {
         }
     }
 
+    private Comparator<Cargo> getComparatorWithRightOrder(CargoSortFields cargoSortFields, boolean isReserved) {
+        if (isReserved) {
+            return getComparatorForCargoFields(cargoSortFields).reversed();
+        }
+        else {
+            return getComparatorForCargoFields(cargoSortFields);
+        }
+    }
+
     private Comparator<Cargo> getComparatorForCargoFields(CargoSortFields cargoSortFields) {
         switch (cargoSortFields) {
             case SORT_BY_NAME: {
@@ -107,7 +117,6 @@ public class CargoServiceImpl implements CargoService {
                 return CARGO_WEIGHT_COMPARATOR;
             }
         }
-
         return null;
     }
 

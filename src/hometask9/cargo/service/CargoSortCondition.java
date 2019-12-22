@@ -19,6 +19,10 @@ public class CargoSortCondition {
         isReversed = true;
     }
 
+    public void setOrderReversed(boolean isReversed) {
+        this.isReversed = isReversed;
+    }
+
     public boolean needSorting() {
         return sortFields != null && sortFields.size() > 0;
     }

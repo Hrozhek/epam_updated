@@ -85,9 +85,7 @@ public class Application {
 
     private static void demoSortOperations() {
         demoCargoSorting(singletonList(SORT_BY_NAME));
-
         demoCargoSorting(singletonList(SORT_BY_WEIGHT));
-
         demoCargoSorting(Arrays.asList(SORT_BY_NAME, SORT_BY_WEIGHT));
 
     }
@@ -111,12 +109,18 @@ public class Application {
 
     private static void demoCargoSorting(Collection<CargoSortFields> sortFields) {
         CargoSortCondition cargoSortCondition = new CargoSortCondition(new LinkedHashSet<>(sortFields));
-        cargoSortCondition.setOrderReversed();
         System.out.println(
                 "---------Sorting '" + getOrderingConditionsAsString(cargoSortCondition) + "'------");
         cargoService.getSortedCargos(cargoSortCondition);
         cargoService.printAll();
         System.out.println();
+        System.out.println(
+                "---------Sorting in reversed order '" + getOrderingConditionsAsString(cargoSortCondition) + "'------");
+        cargoSortCondition.setOrderReversed();
+        cargoService.getSortedCargos(cargoSortCondition);
+        cargoService.printAll();
+        System.out.println();
+        cargoSortCondition.setOrderReversed(false);
     }
 
     public static void demoCarrierDeleter(CarrierService carrierService, TransportationService transportationService) {
