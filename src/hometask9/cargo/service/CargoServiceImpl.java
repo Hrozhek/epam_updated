@@ -42,23 +42,27 @@ public class CargoServiceImpl implements CargoService {
     }
 
     @Override
-    public void deleteById(Long id) {
-        if (ServiceHolder.getInstance() != null) {
-            TransportationService transportationService = ServiceHolder.getInstance().getTransportationService();
-            List<Transportation> transportations = transportationService.getAll();
-            for (Transportation transportation : transportations) {
-                Cargo cargo = this.getById(id);
-                if (transportation.getCargo().equals(cargo)) {
-                    throw new CargoInUseDeleteException("Cargo " + cargo.getName() + ", id " + id +
-                            " cannot be deleted due to it is in use in transportation id " + transportation.getId());
+    public void deleteById(Long id) throws CargoInUseDeleteException {
+        try {
+            if (ServiceHolder.getInstance() != null) {
+                TransportationService transportationService = ServiceHolder.getInstance().getTransportationService();
+                List<Transportation> transportations = transportationService.getAll();
+                for (Transportation transportation : transportations) {
+                    Cargo cargo = this.getById(id);
+                    if (transportation.getCargo().equals(cargo)) {
+                        throw new CargoInUseDeleteException("Cargo " + cargo.getName() + ", id " + id +
+                                " cannot be deleted due to it is in use in transportation id " + transportation.getId());
+                    }
+
+                }
+                if (repo.deleteById(id)) {
+                    System.out.println("Cargo deleted successfully");
+                } else {
+                    throw new IllegalArgumentException("There is no cargo with id: " + id + " nothing to delete");
                 }
             }
-
-        }
-        if (repo.deleteById(id)) {
-            System.out.println("Cargo deleted successfully");
-        } else {
-            throw new IllegalArgumentException("There is no cargo with id: " + id + " nothing to delete");
+        } catch (NullPointerException npe) {
+            System.out.println("Cargo cannot be deleted by id, because its id is null");
         }
     }
 
@@ -89,7 +93,7 @@ public class CargoServiceImpl implements CargoService {
 
     @Override
     public void printAll() {
-        for (Cargo cargo: repo.getAll()) {
+        for (Cargo cargo : repo.getAll()) {
             System.out.println(cargo);
         }
     }

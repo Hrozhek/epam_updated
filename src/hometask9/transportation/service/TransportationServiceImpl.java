@@ -40,10 +40,14 @@ public class TransportationServiceImpl implements TransportationService {
 
     @Override
     public void deleteById(Long id) {
-        if (repo.deleteById(id)) {
-            System.out.println("Transportation deleted successfully");
-        } else {
-            System.out.println("There is no transportation with id: " + id + " nothing to delete");
+        try {
+            if (repo.deleteById(id)) {
+                System.out.println("Transportation deleted successfully");
+            } else {
+                System.out.println("There is no transportation with id: " + id + " nothing to delete");
+            }
+        } catch (NullPointerException npe) {
+            System.out.println("Transportation cannot be deleted by id, because its id is null");
         }
     }
 

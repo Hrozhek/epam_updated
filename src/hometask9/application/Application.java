@@ -10,6 +10,7 @@ import hometask9.carrier.domain.Carrier;
 import hometask9.carrier.service.CarrierService;
 import hometask9.storage.initor.InMemoryStorageInitor;
 import hometask9.storage.initor.StorageInitor;
+import hometask9.transportation.domain.Transportation;
 import hometask9.transportation.service.TransportationService;
 import hometask9.cargo.service.CargoSortFields;
 
@@ -40,6 +41,7 @@ public class Application {
         printStorageData();
         demoSearchOperations();
         demoSortOperations();
+        demoCarrierDeleter(carrierService, transportationService);
     }
 
     private static void demoSearchOperations() {
@@ -115,5 +117,36 @@ public class Application {
         cargoService.getSortedCargos(cargoSortCondition);
         cargoService.printAll();
         System.out.println();
+    }
+
+    public static void demoCarrierDeleter(CarrierService carrierService, TransportationService transportationService) {
+        Carrier carrierForDelete = new Carrier();
+        carrierForDelete.setName("\"Carrier which can be deleted\"");
+        carrierService.add(carrierForDelete);
+        System.out.println("Carrier " + carrierForDelete.getName() + " deleting");
+        carrierService.deleteById(carrierForDelete.getId());
+
+        Carrier carrierWithoutId = new Carrier();
+        carrierWithoutId.setName("\"Carrier without id\"");
+        System.out.println("Try to delete carrier " + carrierWithoutId.getName());
+        carrierService.deleteById(carrierWithoutId.getId());
+
+
+        Carrier carrierUnableToDelete = new Carrier();
+        carrierUnableToDelete.setName("\"Carrier cannot be deleted\"");
+        carrierService.add(carrierUnableToDelete);
+        Transportation transportation = new Transportation();
+        transportation.setCarrier(carrierUnableToDelete);
+        transportationService.add(transportation);
+        try {
+            carrierService.deleteById(carrierUnableToDelete.getId());
+        } catch (RuntimeException e) {
+            System.out.println("Carrier " + carrierUnableToDelete.getName() + " cannot be deleted");
+        }
+
+        Transportation tryToFallWithNPE = new Transportation();
+        //transportationService.add(tryToFallWithNPE);
+        System.out.println("Try to delete transportation " + tryToFallWithNPE.getId());
+        transportationService.deleteById(tryToFallWithNPE.getId());
     }
 }

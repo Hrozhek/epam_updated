@@ -41,26 +41,30 @@ public class CarrierServiceImpl implements CarrierService {
     }
 
     @Override
-    public void deleteById(Long id) {
-        if (ServiceHolder.getInstance() != null) {
-            TransportationService transportationService = ServiceHolder.getInstance().getTransportationService();
-            List<Transportation> transportations = transportationService.getAll();
-            for (Transportation transportation: transportations) {
-                Carrier carrier = this.getById(id);
-                if (transportation.getCarrier().equals(carrier)) {
-                    throw new CarrierInUseDeleteException("Carrier " + carrier.getName() + ", id " + id +
-                            " cannot be deleted due to it is in use in transportation id "  + transportation.getId());
+    public void deleteById(Long id) throws CarrierInUseDeleteException {
+        try {
+            if (ServiceHolder.getInstance() != null) {
+                TransportationService transportationService = ServiceHolder.getInstance().getTransportationService();
+                List<Transportation> transportations = transportationService.getAll();
+                for (Transportation transportation : transportations) {
+                    Carrier carrier = this.getById(id);
+                    if (transportation.getCarrier().equals(carrier)) {
+                        throw new CarrierInUseDeleteException("Carrier " + carrier.getName() + ", id " + id +
+                                " cannot be deleted due to it is in use in transportation id " + transportation.getId());
+                    }
+
+                }
+                if (repo.deleteById(id)) {
+                    System.out.println("Carrier deleted successfully");
+                } else {
+                    throw new IllegalArgumentException("There is no carrier with id: " + id + " nothing to delete");
                 }
             }
-
         }
-        if (repo.deleteById(id)) {
-            System.out.println("Carrier deleted successfully");
-        } else {
-            throw new IllegalArgumentException("There is no carrier with id: " + id + " nothing to delete");
+        catch (NullPointerException npe) {
+            System.out.println("Carrier cannot be deleted by id, because its id is null");
         }
     }
-
 
     @Override
     public List<Carrier> getByName(String name) {
@@ -73,7 +77,7 @@ public class CarrierServiceImpl implements CarrierService {
 
     @Override
     public void printAll() {
-        for (Carrier carrier: repo.getAll()) {
+        for (Carrier carrier : repo.getAll()) {
             System.out.println(carrier);
         }
     }
