@@ -4,14 +4,14 @@ import hometask10.cargo.domain.Cargo;
 
 import java.util.List;
 
-public interface BaseRepo<T, N extends Number> {
+public interface BaseRepo<T, ID> {
     void add(T something);
 
     boolean update(T something);
 
-    T getById(N id);
+    T getById(ID id);
 
-    boolean deleteById(N id);
+    boolean deleteById(ID id);
 
     List<T> getAll();
 }
