@@ -1,8 +1,9 @@
-package hometask12.common.solutions.utils;
+package hometask12.common.business.files;
 
 import hometask12.cargo.domain.Cargo;
 import hometask12.cargo.domain.ClothesCargo;
 import hometask12.cargo.domain.FoodCargo;
+import hometask12.common.solutions.utils.ParseBySeparator;
 
 import java.util.Date;
 import java.util.List;
@@ -33,7 +34,7 @@ public class SimpleFileCargoParser {
         if (cargoType.equals("FOOD")) {
             FoodCargo temp = new FoodCargo();
             if (!fourthParam.isEmpty()) {
-                temp.setExpirationDate(new Date(Integer.parseInt(fourthParam)));
+                temp.setExpirationDate(new Date(Long.parseLong(fourthParam)));
             }
             if (!fifthParam.isEmpty()) {
                 temp.setStoreTemperature(Integer.parseInt(fifthParam));

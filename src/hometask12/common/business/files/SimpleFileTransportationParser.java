@@ -1,7 +1,7 @@
-package hometask12.common.solutions.utils;
+package hometask12.common.business.files;
 
-import hometask12.common.solutions.files.TemporaryTransportation;
-import hometask12.storage.initor.FromFileStorageInitor;
+import hometask12.common.business.files.TemporaryTransportation;
+import hometask12.common.solutions.utils.ParseBySeparator;
 import hometask12.transportation.domain.Transportation;
 
 import java.util.Date;
@@ -33,7 +33,7 @@ public class SimpleFileTransportationParser {
             transportationWrapped.setBillTo(billTo);
         }
         if (!beginDate.isEmpty()) {
-            transportationWrapped.setTransportationBeginDate(new Date(Integer.parseInt(beginDate)));
+            transportationWrapped.setTransportationBeginDate(new Date(Long.parseLong(beginDate)));
         }
 
         temporaryTransportation.setCargoId(fields.get(INDEX_OF_CARGO_ID));

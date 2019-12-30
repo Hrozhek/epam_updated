@@ -5,10 +5,10 @@ import hometask12.cargo.domain.Cargo;
 import hometask12.cargo.service.CargoService;
 import hometask12.carrier.domain.Carrier;
 import hometask12.carrier.service.CarrierService;
-import hometask12.common.solutions.files.TemporaryTransportation;
-import hometask12.common.solutions.utils.SimpleFileCargoParser;
-import hometask12.common.solutions.utils.SimpleFileCarrierParser;
-import hometask12.common.solutions.utils.SimpleFileTransportationParser;
+import hometask12.common.business.files.TemporaryTransportation;
+import hometask12.common.business.files.SimpleFileCargoParser;
+import hometask12.common.business.files.SimpleFileCarrierParser;
+import hometask12.common.business.files.SimpleFileTransportationParser;
 import hometask12.transportation.domain.Transportation;
 import hometask12.transportation.service.TransportationService;
 

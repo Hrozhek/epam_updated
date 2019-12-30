@@ -8,6 +8,7 @@ import hometask12.cargo.service.CargoSortCondition;
 import hometask12.cargo.service.CargoSortFields;
 import hometask12.carrier.domain.Carrier;
 import hometask12.carrier.service.CarrierService;
+import hometask12.common.business.files.SimpleFileSaver;
 import hometask12.storage.initor.FromFileStorageInitor;
 import hometask12.storage.initor.InMemoryStorageInitor;
 import hometask12.storage.initor.StorageInitor;
@@ -40,9 +41,20 @@ public class Application {
         storageInitor.initStorage();
 
         printStorageData();
+        demoSaveToFile();
         //demoSearchOperations();
         //demoSortOperations();
         //demoCarrierDeleter(carrierService, transportationService);
+    }
+
+    private static void demoSaveToFile() {
+        System.out.println(SEPARATOR);
+        System.out.println("Test of writing to file");
+        SimpleFileSaver fileSaver = new SimpleFileSaver();
+        fileSaver.setCargoService(cargoService);
+        fileSaver.setCarrierService(carrierService);
+        fileSaver.setTransportationService(transportationService);
+        fileSaver.save();
     }
 
     private static void demoSearchOperations() {

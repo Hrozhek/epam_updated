@@ -1,4 +1,4 @@
-package hometask12.common.solutions.files;
+package hometask12.common.business.files;
 
 import hometask12.transportation.domain.Transportation;
 

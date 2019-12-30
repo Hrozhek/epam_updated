@@ -1,7 +1,8 @@
-package hometask12.common.solutions.utils;
+package hometask12.common.business.files;
 
 import hometask12.carrier.domain.Carrier;
 import hometask12.carrier.domain.CarrierType;
+import hometask12.common.solutions.utils.ParseBySeparator;
 
 import java.util.List;
 import java.util.Map;

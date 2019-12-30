@@ -1,6 +1,6 @@
 CargosBegin
 CLOTHES|12|Levis 501|2|34|Denim
-FOOD|13|Heinz|1|1577649625|16
+FOOD|13|Heinz|1|1577649625000|16
 CLOTHES|14|Jacket|3|54|Cotton
 CargosEnd
 CarriersBegin
@@ -9,7 +9,7 @@ SHIP|16|ShipCarrier|Saint-Petersburg, Kanonerskiy Island
 CAR|17|CarCarrier|Vsevolozhsk, Yuzhniy 12
 CarriersEnd
 TransportationsBegin
-12|17|present for my friend|friend|1577600000
-13|15|food package|Ivan Sinicyn|1577611111
-14|16|parcel with jacket|Anton Ivanov|1577611122
+12|17|present for my friend|friend|15776000000000
+13|15|food package|Ivan Sinicyn|1577611111000
+14|16|parcel with jacket|Anton Ivanov|1577611122000
 TransportationsEnd
