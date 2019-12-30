@@ -1,0 +1,71 @@
+<root>
+    <Cargos>
+        <Cargo>
+            <type>Food</type>
+            <id>11</id>
+            <name>Cheese</name>
+            <weight>1</weight>
+            <fourth_param>1577649625001</fourth_param>
+            <fifth_param>6</fifth_param>
+        </Cargo>
+        <Cargo>
+            <type>Clothes</type>
+            <id>22</id>
+            <name>Skirt</name>
+            <weight>1</weight>
+            <fourth_param>Large</fourth_param>
+            <fifth_param>Latex</fifth_param>
+        </Cargo>
+        <Cargo>
+            <type>Clothes</type>
+            <id>33</id>
+            <name>Boots</name>
+            <weight>2</weight>
+            <fourth_param>41</fourth_param>
+            <fifth_param>Leather</fifth_param>
+        </Cargo>
+    </Cargos>
+    <Carriers>
+        <Carrier>
+            <type>PLANE</type>
+            <id>44</id>
+            <name>Carrier44</name>
+            <address></address>
+        </Carrier>
+        <Carrier>
+            <type>TRAIN</type>
+            <id>55</id>
+            <name>Carrier55</name>
+            <address></address>
+        </Carrier>
+        <Carrier>
+            <type>CAR</type>
+            <id>66</id>
+            <name>Carrier66</name>
+            <address></address>
+        </Carrier>
+    </Carriers>
+    <Trasnportations>
+        <Trasnportation>
+            <cargoId>33</cargoId>
+            <carrierId>66</carrierId>
+            <description>to my colleague</description>
+            <billTo>my colleague</billTo>
+            <beginDate>1577649625012</beginDate>
+        </Trasnportation>
+        <Trasnportation>
+            <cargoId>11</cargoId>
+            <carrierId>44</carrierId>
+            <description>to my friend</description>
+            <billTo>my friend</billTo>
+            <beginDate>1577649624012</beginDate>
+        </Trasnportation>
+        <Trasnportation>
+            <cargoId>22</cargoId>
+            <carrierId>55</carrierId>
+            <description>to me</description>
+            <billTo>me</billTo>
+            <beginDate>1577649615012</beginDate>
+        </Trasnportation>
+    </Trasnportations>
+</root>

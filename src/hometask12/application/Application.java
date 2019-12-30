@@ -36,8 +36,8 @@ public class Application {
         cargoService = ServiceHolder.getInstance().getCargoService();
         carrierService = ServiceHolder.getInstance().getCarrierService();
 
-        //StorageInitor storageInitor = new InMemoryStorageInitor();
-        StorageInitor storageInitor = new FromFileStorageInitor();
+        StorageInitor storageInitor = new InMemoryStorageInitor();
+        //StorageInitor storageInitor = new FromFileStorageInitor();
         storageInitor.initStorage();
 
         printStorageData();
@@ -48,7 +48,7 @@ public class Application {
     }
 
     private static void demoSaveToFile() {
-        System.out.println(SEPARATOR);
+        printSeparator();
         System.out.println("Test of writing to file");
         SimpleFileSaver fileSaver = new SimpleFileSaver();
         fileSaver.setCargoService(cargoService);
@@ -87,7 +87,7 @@ public class Application {
         carrierService.printAll();
         printSeparator();
 
-        System.out.println("ALL TRANSPOORTATIONS");
+        System.out.println("ALL TRANSPORTATIONS");
         transportationService.printAll();
         printSeparator();
     }

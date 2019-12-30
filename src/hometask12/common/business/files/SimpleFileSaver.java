@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class SimpleFileSaver {
@@ -68,7 +69,13 @@ public class SimpleFileSaver {
             switch (cargoType) {
                 case FOOD:
                     FoodCargo foodCargo = (FoodCargo) cargo;
-                    parameters.add(foodCargo.getExpirationDate().getTime());
+                    Date date = foodCargo.getExpirationDate();
+                    if (date != null) {
+                        parameters.add(date.getTime());
+                    }
+                    else {
+                        parameters.add(null);
+                    }
                     parameters.add(foodCargo.getStoreTemperature());
                     break;
                 case CLOTHES:
@@ -124,7 +131,13 @@ public class SimpleFileSaver {
             parameters.add(transportation.getCarrier().getId());
             parameters.add(transportation.getDescription());
             parameters.add(transportation.getBillTo());
-            parameters.add(transportation.getTransportationBeginDate().getTime());
+            Date date = transportation.getTransportationBeginDate();
+            if (date != null) {
+                parameters.add(date.getTime());
+            }
+            else {
+                parameters.add(null);
+            }
 
             for (Object parameter : parameters) {
                 if (parameter != null) {
