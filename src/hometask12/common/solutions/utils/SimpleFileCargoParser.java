@@ -28,19 +28,35 @@ public class SimpleFileCargoParser {
         Cargo cargo = null;
         List<String> fields = ParseBySeparator.getSeparated(fileLine, SEPARATOR);
         cargoType = fields.get(INDEX_OF_TYPE);
+        String fourthParam = fields.get(INDEX_OF_SIZE_OR_EXPIRATION);
+        String fifthParam = fields.get(INDEX_OF_MATERIAL_OR_STORETEMP);
         if (cargoType.equals("FOOD")) {
             FoodCargo temp = new FoodCargo();
-            temp.setExpirationDate(new Date(Integer.parseInt(fields.get(INDEX_OF_SIZE_OR_EXPIRATION))));
-            temp.setStoreTemperature(Integer.parseInt(fields.get(INDEX_OF_MATERIAL_OR_STORETEMP)));
+            if (!fourthParam.isEmpty()) {
+                temp.setExpirationDate(new Date(Integer.parseInt(fourthParam)));
+            }
+            if (!fifthParam.isEmpty()) {
+                temp.setStoreTemperature(Integer.parseInt(fifthParam));
+            }
             cargo = temp;
         } else if (cargoType.equals("CLOTHES")) {
             ClothesCargo temp = new ClothesCargo();
-            temp.setSize(fields.get(INDEX_OF_SIZE_OR_EXPIRATION));
-            temp.setMaterial(fields.get(INDEX_OF_MATERIAL_OR_STORETEMP));
+            if (!fourthParam.isEmpty()) {
+                temp.setSize(fourthParam);
+            }
+            if (!fifthParam.isEmpty()) {
+                temp.setMaterial(fifthParam);
+            }
             cargo = temp;
         }
-        cargo.setName(fields.get(INDEX_OF_NAME));
-        cargo.setWeight(Integer.parseInt(fields.get(INDEX_OF_WEIGHT)));
+        String name = fields.get(INDEX_OF_NAME);
+        if (!name.isEmpty()) {
+            cargo.setName(name);
+        }
+        String weight = fields.get(INDEX_OF_WEIGHT);
+        if (!weight.isEmpty()) {
+            cargo.setWeight(Integer.parseInt(weight));
+        }
         cargoMap.put(fields.get(INDEX_OF_ID), cargo);
     }
 }

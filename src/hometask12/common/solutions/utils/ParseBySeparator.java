@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParseBySeparator {
-    private ParseBySeparator(){
+    private ParseBySeparator() {
 
     }
 
@@ -13,16 +13,14 @@ public class ParseBySeparator {
         StringBuilder oneValue = new StringBuilder();
         for (int i = 0; i < line.length(); i++) {
             char symbol = line.charAt(i);
-            if (symbol != Separator && i < line.length()-1) {
+            if (symbol != Separator) {
                 oneValue.append(symbol);
-            }
-            else if (i < line.length() - 1){
+                if (i == line.length() - 1) {
+                    answer.add(oneValue.toString());
+                }
+            } else {
                 answer.add(oneValue.toString());
                 oneValue = new StringBuilder();
-            }
-            else {
-                oneValue.append(symbol);
-                answer.add(oneValue.toString());
             }
         }
         return answer;

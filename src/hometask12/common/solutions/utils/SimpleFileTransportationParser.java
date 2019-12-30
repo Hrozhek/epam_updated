@@ -21,9 +21,21 @@ public class SimpleFileTransportationParser {
         TemporaryTransportation temporaryTransportation = new TemporaryTransportation();
         Transportation transportationWrapped = new Transportation();
         List<String> fields = ParseBySeparator.getSeparated(fileLine, SEPARATOR);
-        transportationWrapped.setDescription(fields.get(INDEX_OF_DESCRIPTION));
-        transportationWrapped.setBillTo(fields.get(INDEX_OF_BILL_TO));
-        transportationWrapped.setTransportationBeginDate(new Date(Integer.parseInt(fields.get(INDEX_OF_BEGIN_DATE))));
+
+        String description = fields.get(INDEX_OF_DESCRIPTION);
+        String billTo = fields.get(INDEX_OF_BILL_TO);
+        String beginDate = fields.get(INDEX_OF_BEGIN_DATE);
+
+        if (!description.isEmpty()) {
+            transportationWrapped.setDescription(description);
+        }
+        if (!billTo.isEmpty()) {
+            transportationWrapped.setBillTo(billTo);
+        }
+        if (!beginDate.isEmpty()) {
+            transportationWrapped.setTransportationBeginDate(new Date(Integer.parseInt(beginDate)));
+        }
+
         temporaryTransportation.setCargoId(fields.get(INDEX_OF_CARGO_ID));
         temporaryTransportation.setCarrierId(fields.get(INDEX_OF_CARRIER_ID));
         temporaryTransportation.setTransportation(transportationWrapped);

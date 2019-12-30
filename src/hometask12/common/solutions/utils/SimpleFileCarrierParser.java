@@ -28,8 +28,14 @@ public class SimpleFileCarrierParser {
         } else if (carrierType.equals("TRAIN")) {
             carrier.setCarrierType(CarrierType.TRAIN);
         }
-        carrier.setName(fields.get(INDEX_OF_NAME));
-        carrier.setAddress(fields.get(INDEX_OF_ADDRESS));
+        String name = fields.get(INDEX_OF_NAME);
+        String address = fields.get(INDEX_OF_ADDRESS);
+        if (!name.isEmpty()) {
+            carrier.setName(name);
+        }
+        if (!address.isEmpty()) {
+            carrier.setAddress(address);
+        }
         carrierMap.put(fields.get(INDEX_OF_ID), carrier);
     }
 }
