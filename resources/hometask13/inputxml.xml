@@ -1,0 +1,65 @@
+<root>
+    <Cargos>
+        <Cargo type = "FOOD">
+            <id>11</id>
+            <name>Cheese</name>
+            <weight>1</weight>
+            <expirationDate>1577649625001</expirationDate>
+            <storeTemperature>6</storeTemperature>
+        </Cargo>
+        <Cargo type = "CLOTHES">
+            <id>22</id>
+            <name>Skirt</name>
+            <weight>1</weight>
+            <size>Large</size>
+            <material>Latex</material>
+        </Cargo>
+        <Cargo type = "CLOTHES">
+            <id>33</id>
+            <name>Boots</name>
+            <weight>2</weight>
+            <size>41</size>
+            <material>Leather</material>
+        </Cargo>
+    </Cargos>
+    <Carriers>
+        <Carrier type = "PLANE">
+            <id>44</id>
+            <name>Carrier44</name>
+            <address>Saint-Petersburg, Kanonerskiy Island</address>
+        </Carrier>
+        <Carrier type = "TRAIN">
+            <id>55</id>
+            <name>Carrier55</name>
+            <address>Moscow, Domodedovo</address>
+        </Carrier>
+        <Carrier type = "CAR">
+            <id>66</id>
+            <name>Carrier66</name>
+            <address>Vsevolozhsk, Yuzhniy 12</address>
+        </Carrier>
+    </Carriers>
+    <Transportations>
+        <Transportation>
+            <cargoId>33</cargoId>
+            <carrierId>66</carrierId>
+            <description>to my colleague</description>
+            <billTo>my colleague</billTo>
+            <beginDate>1577649625012</beginDate>
+        </Transportation>
+        <Transportation>
+            <cargoId>11</cargoId>
+            <carrierId>44</carrierId>
+            <description>to my friend</description>
+            <billTo>my friend</billTo>
+            <beginDate>1577649624012</beginDate>
+        </Transportation>
+        <Transportation>
+            <cargoId>22</cargoId>
+            <carrierId>55</carrierId>
+            <description>to me</description>
+            <billTo>me</billTo>
+            <beginDate>1577649615012</beginDate>
+        </Transportation>
+    </Transportations>
+</root>

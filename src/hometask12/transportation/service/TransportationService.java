@@ -1,7 +1,7 @@
 package hometask12.transportation.service;
 
-import hometask12.common.solutions.service.BaseService;
-import hometask12.transportation.domain.Transportation;
+import hometask13.common.solutions.service.BaseService;
+import hometask13.transportation.domain.Transportation;
 
 public interface TransportationService extends BaseService<Transportation, Long> {
     //void add(Transportation transportation);

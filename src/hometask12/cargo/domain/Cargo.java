@@ -1,7 +1,8 @@
 package hometask12.cargo.domain;
 
-import hometask12.common.business.BaseEntity;
-import hometask12.transportation.domain.Transportation;
+import hometask13.cargo.domain.CargoType;
+import hometask13.common.business.BaseEntity;
+import hometask13.transportation.domain.Transportation;
 
 import java.util.Arrays;
 import java.util.Objects;

@@ -1,17 +1,18 @@
 package hometask12.application.serviceholder;
 
-import hometask12.cargo.repo.CargoArrayRepoImpl;
-import hometask12.cargo.repo.CargoCollectionRepoImpl;
-import hometask12.cargo.service.CargoService;
-import hometask12.cargo.service.CargoServiceImpl;
-import hometask12.carrier.repo.CarrierArrayRepoImpl;
-import hometask12.carrier.repo.CarrierCollectionRepoImpl;
-import hometask12.carrier.service.CarrierService;
-import hometask12.carrier.service.CarrierServiceImpl;
-import hometask12.transportation.repo.TransportationArrayRepoImpl;
-import hometask12.transportation.repo.TransportationCollectionRepoImpl;
-import hometask12.transportation.service.TransportationService;
-import hometask12.transportation.service.TransportationServiceImpl;
+import hometask13.application.serviceholder.StorageType;
+import hometask13.cargo.repo.CargoArrayRepoImpl;
+import hometask13.cargo.repo.CargoCollectionRepoImpl;
+import hometask13.cargo.service.CargoService;
+import hometask13.cargo.service.CargoServiceImpl;
+import hometask13.carrier.repo.CarrierArrayRepoImpl;
+import hometask13.carrier.repo.CarrierCollectionRepoImpl;
+import hometask13.carrier.service.CarrierService;
+import hometask13.carrier.service.CarrierServiceImpl;
+import hometask13.transportation.repo.TransportationArrayRepoImpl;
+import hometask13.transportation.repo.TransportationCollectionRepoImpl;
+import hometask13.transportation.service.TransportationService;
+import hometask13.transportation.service.TransportationServiceImpl;
 
 public final class ServiceHolder {
     private static ServiceHolder instance = null;
@@ -20,14 +21,14 @@ public final class ServiceHolder {
     private final CargoService cargoService;
     private final TransportationService transportationService;
 
-    private ServiceHolder(StorageType storageType) {
+    private ServiceHolder(hometask13.application.serviceholder.StorageType storageType) {
         SimpleServiceHolder initedServiceHolder = getInitedServiceHolder(storageType);
         transportationService = initedServiceHolder.transportationService;
         cargoService = initedServiceHolder.cargoService;
         carrierService = initedServiceHolder.carrierService;
     }
 
-    public static void initServiceHolder(StorageType storageType) {
+    public static void initServiceHolder(hometask13.application.serviceholder.StorageType storageType) {
         ServiceHolder.instance = new ServiceHolder(storageType);
     }
 

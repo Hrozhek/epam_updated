@@ -1,12 +1,15 @@
 package hometask12.cargo.domain;
 
+import hometask13.cargo.domain.Cargo;
+import hometask13.cargo.domain.CargoType;
+
 public class ClothesCargo extends Cargo {
 
     private String size;
     private String material;
 
     @Override
-    public CargoType getCargoType() {
+    public hometask13.cargo.domain.CargoType getCargoType() {
         return CargoType.CLOTHES;
     }
 

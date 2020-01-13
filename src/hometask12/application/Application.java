@@ -1,27 +1,27 @@
 package hometask12.application;
 
-import hometask12.application.serviceholder.ServiceHolder;
-import hometask12.application.serviceholder.StorageType;
-import hometask12.cargo.domain.Cargo;
-import hometask12.cargo.service.CargoService;
-import hometask12.cargo.service.CargoSortCondition;
-import hometask12.cargo.service.CargoSortFields;
-import hometask12.carrier.domain.Carrier;
-import hometask12.carrier.service.CarrierService;
-import hometask12.common.business.files.SimpleFileSaver;
-import hometask12.storage.initor.FromFileStorageInitor;
-import hometask12.storage.initor.InMemoryStorageInitor;
-import hometask12.storage.initor.StorageInitor;
-import hometask12.transportation.domain.Transportation;
-import hometask12.transportation.service.TransportationService;
+import hometask13.application.serviceholder.ServiceHolder;
+import hometask13.application.serviceholder.StorageType;
+import hometask13.cargo.domain.Cargo;
+import hometask13.cargo.service.CargoService;
+import hometask13.cargo.service.CargoSortCondition;
+import hometask13.cargo.service.CargoSortFields;
+import hometask13.carrier.domain.Carrier;
+import hometask13.carrier.service.CarrierService;
+import hometask13.common.business.exception.checked.InitStorageException;
+import hometask13.common.business.files.SimpleFileSaver;
+import hometask13.storage.initor.InMemoryStorageInitor;
+import hometask13.storage.initor.StorageInitor;
+import hometask13.transportation.domain.Transportation;
+import hometask13.transportation.service.TransportationService;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
-import static hometask12.cargo.service.CargoSortFields.SORT_BY_NAME;
-import static hometask12.cargo.service.CargoSortFields.SORT_BY_WEIGHT;
+import static hometask13.cargo.service.CargoSortFields.SORT_BY_NAME;
+import static hometask13.cargo.service.CargoSortFields.SORT_BY_WEIGHT;
 import static java.util.Collections.singletonList;
 
 public class Application {
@@ -30,7 +30,7 @@ public class Application {
     private static CarrierService carrierService;
     private static TransportationService transportationService;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InitStorageException {
         ServiceHolder.initServiceHolder(StorageType.COLLECTION);
         transportationService = ServiceHolder.getInstance().getTransportationService();
         cargoService = ServiceHolder.getInstance().getCargoService();

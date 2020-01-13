@@ -1,6 +1,7 @@
 package hometask12.carrier.domain;
-import hometask12.common.business.BaseEntity;
-import hometask12.transportation.domain.Transportation;
+import hometask13.carrier.domain.CarrierType;
+import hometask13.common.business.BaseEntity;
+import hometask13.transportation.domain.Transportation;
 
 import java.util.Objects;
 

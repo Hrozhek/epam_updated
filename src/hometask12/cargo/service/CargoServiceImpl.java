@@ -1,9 +1,13 @@
 package hometask12.cargo.service;
 
-import hometask12.cargo.domain.Cargo;
-import hometask12.cargo.repo.CargoRepo;
-import hometask12.transportation.domain.Transportation;
-import hometask12.transportation.service.TransportationService;
+import hometask13.cargo.domain.Cargo;
+import hometask13.cargo.repo.CargoRepo;
+import hometask13.cargo.service.CargoInUseDeleteException;
+import hometask13.cargo.service.CargoService;
+import hometask13.cargo.service.CargoSortCondition;
+import hometask13.cargo.service.CargoSortFields;
+import hometask13.transportation.domain.Transportation;
+import hometask13.transportation.service.TransportationService;
 
 import java.util.*;
 
@@ -85,7 +89,7 @@ public class CargoServiceImpl implements CargoService {
     public List<Cargo> getSorted(CargoSortCondition cargoSortsCondition) {
         List<Cargo> cargos = repo.getAll();
         if (cargoSortsCondition.needSorting()) {
-            ArrayList<CargoSortFields> cargoSortFields = new ArrayList(cargoSortsCondition.getSortFields());
+            ArrayList<hometask13.cargo.service.CargoSortFields> cargoSortFields = new ArrayList(cargoSortsCondition.getSortFields());
             boolean needReverse = cargoSortsCondition.isOrderReversed();
             if (cargoSortFields.size() == 1) {
                 Collections.sort(cargos, getComparatorWithRightOrder(cargoSortFields.get(0), needReverse));
@@ -105,7 +109,7 @@ public class CargoServiceImpl implements CargoService {
         }
     }
 
-    private Comparator<Cargo> getComparatorWithRightOrder(CargoSortFields cargoSortFields, boolean isReserved) {
+    private Comparator<Cargo> getComparatorWithRightOrder(hometask13.cargo.service.CargoSortFields cargoSortFields, boolean isReserved) {
         if (cargoSortFields != null && isReserved) {
             return getComparatorForCargoFields(cargoSortFields).reversed();
         } else {

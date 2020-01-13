@@ -1,6 +1,6 @@
 package hometask12.common.business.files;
 
-import hometask12.transportation.domain.Transportation;
+import hometask13.transportation.domain.Transportation;
 
 public class TemporaryTransportation {
     private Transportation transportation;

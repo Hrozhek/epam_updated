@@ -1,10 +1,10 @@
 CargosBegin
-CLOTHES|1|Jeans|48.0|Clothes_Size_0|
-CLOTHES|2|Jeans|92.0|Clothes_Size_1|
-CLOTHES|3|Jeans|73.0|Clothes_Size_2|
-FOOD|4|Milk|95.0|1577714031337|0
-FOOD|5|Milk|48.0|1577714031337|1
-FOOD|6|Milk|78.0|1577714031337|2
+CLOTHES|1|Jeans|95.0|Clothes_Size_0|
+CLOTHES|2|Jeans|89.0|Clothes_Size_1|
+CLOTHES|3|Jeans|68.0|Clothes_Size_2|
+FOOD|4|Milk|22.0|1578837663611|0
+FOOD|5|Milk|69.0|1578837663611|1
+FOOD|6|Milk|53.0|1578837663611|2
 CargosEnd
 CarriersBegin
 |7|Carrier_Name|Address_0
