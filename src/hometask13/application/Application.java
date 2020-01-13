@@ -41,7 +41,8 @@ public class Application {
         StorageInitor storageInitor = getStorageInitor(InitStorageType.XML_SAX_FILE);
         //StorageInitor storageInitor = getStorageInitor(InitStorageType.XML_DOM_FILE);
         //StorageInitor storageInitor = new InMemoryStorageInitor();
-        //StorageInitor storageInitor = new FromFileStorageInitor();
+        //StorageInitor storageInitor = getStorageInitor(InitStorageType.TEXT_FILE);
+        //StorageInitor storageInitor = getStorageInitor(InitStorageType.MEMORY);
         try {
             storageInitor.initStorage();
         } catch (InitStorageException e) {
@@ -49,7 +50,7 @@ public class Application {
         }
 
         printStorageData();
-        demoSaveToFile();
+        //demoSaveToFile();
         //demoSearchOperations();
         //demoSortOperations();
         //demoCarrierDeleter(carrierService, transportationService);
