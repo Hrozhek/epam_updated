@@ -1,5 +1,7 @@
 package hometask13.common.business.exception.checked;
 
+import hometask14.common.business.exception.checked.OurCompanyCheckedException;
+
 public class ReportException extends OurCompanyCheckedException {
 
     public ReportException(String message) {

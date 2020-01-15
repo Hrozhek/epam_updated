@@ -1,8 +1,8 @@
 package hometask12.common.business.files;
 
-import hometask13.common.business.files.TemporaryTransportation;
-import hometask13.common.solutions.utils.ParseBySeparator;
-import hometask13.transportation.domain.Transportation;
+import hometask14.common.business.files.TemporaryTransportation;
+import hometask14.common.solutions.utils.ParseBySeparator;
+import hometask14.transportation.domain.Transportation;
 
 import java.util.Date;
 import java.util.List;
@@ -17,8 +17,8 @@ public class SimpleFileTransportationParser {
 
     private static String transportationType;
 
-    public static void parse(String fileLine, List<hometask13.common.business.files.TemporaryTransportation> transportationList) {
-        hometask13.common.business.files.TemporaryTransportation temporaryTransportation = new TemporaryTransportation();
+    public static void parse(String fileLine, List<hometask14.common.business.files.TemporaryTransportation> transportationList) {
+        hometask14.common.business.files.TemporaryTransportation temporaryTransportation = new TemporaryTransportation();
         Transportation transportationWrapped = new Transportation();
         List<String> fields = ParseBySeparator.getSeparated(fileLine, SEPARATOR);
 

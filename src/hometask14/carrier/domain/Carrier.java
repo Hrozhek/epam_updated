@@ -1,12 +1,12 @@
 package hometask14.carrier.domain;
-import hometask13.carrier.domain.CarrierType;
-import hometask13.common.business.BaseEntity;
-import hometask13.transportation.domain.Transportation;
+import hometask14.common.business.BaseEntity;
+import hometask14.transportation.domain.Transportation;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-public class Carrier extends BaseEntity {
+public class Carrier extends BaseEntity{
 
     private String name;
     private String address;

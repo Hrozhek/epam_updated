@@ -1,29 +1,29 @@
 package hometask14.application;
 
-import hometask13.application.serviceholder.ServiceHolder;
-import hometask13.application.serviceholder.StorageType;
-import hometask13.cargo.domain.Cargo;
-import hometask13.cargo.service.CargoService;
-import hometask13.cargo.service.CargoSortCondition;
-import hometask13.cargo.service.CargoSortFields;
-import hometask13.carrier.domain.Carrier;
-import hometask13.carrier.service.CarrierService;
-import hometask13.common.business.exception.checked.InitStorageException;
-import hometask13.common.business.files.SimpleFileSaver;
-import hometask13.storage.initor.InMemoryStorageInitor;
-import hometask13.storage.initor.InitStorageType;
-import hometask13.storage.initor.StorageInitor;
-import hometask13.transportation.domain.Transportation;
-import hometask13.transportation.service.TransportationService;
+import hometask14.application.serviceholder.ServiceHolder;
+import hometask14.application.serviceholder.StorageType;
+import hometask14.cargo.domain.Cargo;
+import hometask14.cargo.service.CargoService;
+import hometask14.cargo.service.CargoSortCondition;
+import hometask14.cargo.service.CargoSortFields;
+import hometask14.carrier.domain.Carrier;
+import hometask14.carrier.service.CarrierService;
+import hometask14.common.business.BaseEntity;
+import hometask14.common.business.exception.checked.InitStorageException;
+import hometask14.common.business.files.SimpleFileSaver;
+import hometask14.common.solutions.service.BaseService;
+import hometask14.storage.Storage;
+import hometask14.storage.initor.InitStorageType;
+import hometask14.storage.initor.StorageInitor;
+import hometask14.transportation.domain.Transportation;
+import hometask14.transportation.service.TransportationService;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
+import java.io.*;
+import java.util.*;
 
-import static hometask13.cargo.service.CargoSortFields.SORT_BY_NAME;
-import static hometask13.cargo.service.CargoSortFields.SORT_BY_WEIGHT;
-import static hometask13.storage.initor.StorageInitorFactory.getStorageInitor;
+import static hometask14.cargo.service.CargoSortFields.SORT_BY_NAME;
+import static hometask14.cargo.service.CargoSortFields.SORT_BY_WEIGHT;
+import static hometask14.storage.initor.StorageInitorFactory.getStorageInitor;
 import static java.util.Collections.singletonList;
 
 public class Application {
@@ -50,6 +50,7 @@ public class Application {
         }
 
         printStorageData();
+        demoSerialize();
         //demoSaveToFile();
         //demoSearchOperations();
         //demoSortOperations();
@@ -173,5 +174,52 @@ public class Application {
         Transportation tryToFallWithNPE = new Transportation();
         System.out.println("Try to delete transportation " + tryToFallWithNPE.getId());
         transportationService.deleteById(tryToFallWithNPE.getId());
+    }
+
+    private static void demoSerialize() {
+        File file = null;
+        try {
+            file = File.createTempFile("hometask14", ".txt");
+            try (ObjectOutput writer = new ObjectOutputStream(new FileOutputStream(file));
+                 ObjectInputStream reader = new ObjectInputStream(new FileInputStream(file))) {
+                serializeObjects(cargoService, writer);
+                deserializeCargos(reader);
+                serializeObjects(carrierService, writer);
+                deserializeCarriers(reader);
+                serializeObjects(transportationService, writer);
+                deserializeTrasnportations(reader);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally{
+            if (file != null) {
+                file.delete();
+            }
+        }
+    }
+    private static void serializeObjects(BaseService service, ObjectOutput output) throws IOException {
+        List<BaseEntity> entities = service.getAll();
+        output.writeObject(entities);
+    }
+    private static void deserializeCargos(ObjectInputStream reader) throws IOException, ClassNotFoundException {
+        Storage storage = new Storage();
+        List<Cargo> cargos = (List<Cargo>) reader.readObject();
+        for (Cargo cargo: cargos) {
+            storage.cargoList.add(cargo);
+        }
+        System.out.println("Previous cargoes:");
+        cargoService.printAll();
+        System.out.println("After serialization:");
+        for (Cargo cargo: cargos) {
+            System.out.println(cargo);
+        }
+    }
+    private static void deserializeCarriers(ObjectInputStream reader) {
+
+    }
+
+    public static void deserializeTrasnportations(ObjectInputStream reader){
+
     }
 }

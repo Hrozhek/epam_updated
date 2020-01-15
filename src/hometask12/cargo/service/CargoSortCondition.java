@@ -1,15 +1,15 @@
 package hometask12.cargo.service;
 
-import hometask13.cargo.service.CargoSortFields;
+import hometask14.cargo.service.CargoSortFields;
 
 import java.util.Set;
 
 public class CargoSortCondition {
-    Set<hometask13.cargo.service.CargoSortFields> sortFields;
+    Set<hometask14.cargo.service.CargoSortFields> sortFields;
 
     private boolean isReversed = false;
 
-    public CargoSortCondition(Set<hometask13.cargo.service.CargoSortFields> sortFields) {
+    public CargoSortCondition(Set<hometask14.cargo.service.CargoSortFields> sortFields) {
         this.sortFields = sortFields;
     }
 

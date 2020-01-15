@@ -1,7 +1,7 @@
 package hometask13.carrier.repo;
 
-import hometask13.carrier.domain.Carrier;
-import hometask13.common.solutions.repo.BaseRepo;
+import hometask14.carrier.domain.Carrier;
+import hometask14.common.solutions.repo.BaseRepo;
 
 public interface CarrierRepo extends BaseRepo<Carrier, Long> {
     //void add(Carrier carrier);

@@ -1,7 +1,7 @@
 package hometask12.transportation.repo;
 
-import hometask13.common.solutions.repo.BaseRepo;
-import hometask13.transportation.domain.Transportation;
+import hometask14.common.solutions.repo.BaseRepo;
+import hometask14.transportation.domain.Transportation;
 
 public interface TransportationRepo extends BaseRepo<Transportation, Long> {
     //void add(Transportation transportation);

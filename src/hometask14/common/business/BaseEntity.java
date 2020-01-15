@@ -1,6 +1,8 @@
 package hometask14.common.business;
 
-public abstract class BaseEntity {
+import java.io.Serializable;
+
+public abstract class BaseEntity implements Serializable {
     protected Long id;
 
     public Long getId() {
