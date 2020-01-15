@@ -191,35 +191,33 @@ public class Application {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally{
+        } finally {
             if (file != null) {
                 file.delete();
             }
         }
     }
+
     private static void serializeObjects(BaseService service, ObjectOutput output) throws IOException {
         List<BaseEntity> entities = service.getAll();
         output.writeObject(entities);
     }
+
     private static void deserializeCargos(ObjectInputStream reader) throws IOException, ClassNotFoundException {
-        Storage storage = new Storage();
-        List<Cargo> cargos = (List<Cargo>) reader.readObject();
-        for (Cargo cargo: cargos) {
-            storage.cargoList.add(cargo);
-        }
         System.out.println("Previous cargoes:");
         cargoService.printAll();
         System.out.println("After serialization:");
-        for (Cargo cargo: cargos) {
+        List<Cargo> cargos = (List<Cargo>) reader.readObject();
+        for (Cargo cargo : cargos) {
             System.out.println(cargo);
         }
     }
+
     private static void deserializeCarriers(ObjectInputStream reader) {
 
     }
 
-    public static void deserializeTrasnportations(ObjectInputStream reader){
+    public static void deserializeTrasnportations(ObjectInputStream reader) {
 
     }
 }
