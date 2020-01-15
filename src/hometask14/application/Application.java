@@ -203,7 +203,7 @@ public class Application {
         output.writeObject(entities);
     }
 
-    private static void deserializeCargos(ObjectInputStream reader) throws IOException, ClassNotFoundException {
+    private static List<Cargo> deserializeCargos(ObjectInputStream reader) throws Exception{
         System.out.println("Previous cargoes:");
         cargoService.printAll();
         System.out.println("After serialization:");
@@ -211,13 +211,28 @@ public class Application {
         for (Cargo cargo : cargos) {
             System.out.println(cargo);
         }
+        return cargos;
     }
 
-    private static void deserializeCarriers(ObjectInputStream reader) {
-
+    private static List<Carrier> deserializeCarriers(ObjectInputStream reader) throws Exception{
+        System.out.println("Previous carrieres:");
+        carrierService.printAll();
+        System.out.println("After serialization:");
+        List<Carrier> carriers = (List<Carrier>) reader.readObject();
+        for (Carrier carrier : carriers) {
+            System.out.println(carrier);
+        }
+        return carriers;
     }
 
-    public static void deserializeTrasnportations(ObjectInputStream reader) {
-
+    public static List<Transportation> deserializeTrasnportations(ObjectInputStream reader) throws Exception{
+        System.out.println("Previous transportationes:");
+        transportationService.printAll();
+        System.out.println("After serialization:");
+        List<Transportation> transportations = (List<Transportation>) reader.readObject();
+        for (Transportation transportation : transportations) {
+            System.out.println(transportation);
+        }
+        return transportations;
     }
 }
