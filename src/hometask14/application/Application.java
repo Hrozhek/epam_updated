@@ -175,6 +175,43 @@ public class Application {
         System.out.println("Try to delete transportation " + tryToFallWithNPE.getId());
         transportationService.deleteById(tryToFallWithNPE.getId());
     }
+    public static void serializeObjects(BaseService service, ObjectOutput output) throws IOException {
+        List<BaseEntity> entities = service.getAll();
+        output.writeObject(entities);
+    }
+
+    public static List<Cargo> deserializeCargos(ObjectInputStream reader) throws Exception{
+        System.out.println("Previous cargoes:");
+        cargoService.printAll();
+        System.out.println("After serialization:");
+        List<Cargo> cargos = (List<Cargo>) reader.readObject();
+        for (Cargo cargo : cargos) {
+            System.out.println(cargo);
+        }
+        return cargos;
+    }
+
+    public static List<Carrier> deserializeCarriers(ObjectInputStream reader) throws Exception{
+        System.out.println("Previous carrieres:");
+        carrierService.printAll();
+        System.out.println("After serialization:");
+        List<Carrier> carriers = (List<Carrier>) reader.readObject();
+        for (Carrier carrier : carriers) {
+            System.out.println(carrier);
+        }
+        return carriers;
+    }
+
+    public static List<Transportation> deserializeTrasnportations(ObjectInputStream reader) throws Exception{
+        System.out.println("Previous transportationes:");
+        transportationService.printAll();
+        System.out.println("After serialization:");
+        List<Transportation> transportations = (List<Transportation>) reader.readObject();
+        for (Transportation transportation : transportations) {
+            System.out.println(transportation);
+        }
+        return transportations;
+    }
 
     private static void demoSerialize() {
         File file = null;
@@ -196,43 +233,5 @@ public class Application {
                 file.delete();
             }
         }
-    }
-
-    private static void serializeObjects(BaseService service, ObjectOutput output) throws IOException {
-        List<BaseEntity> entities = service.getAll();
-        output.writeObject(entities);
-    }
-
-    private static List<Cargo> deserializeCargos(ObjectInputStream reader) throws Exception{
-        System.out.println("Previous cargoes:");
-        cargoService.printAll();
-        System.out.println("After serialization:");
-        List<Cargo> cargos = (List<Cargo>) reader.readObject();
-        for (Cargo cargo : cargos) {
-            System.out.println(cargo);
-        }
-        return cargos;
-    }
-
-    private static List<Carrier> deserializeCarriers(ObjectInputStream reader) throws Exception{
-        System.out.println("Previous carrieres:");
-        carrierService.printAll();
-        System.out.println("After serialization:");
-        List<Carrier> carriers = (List<Carrier>) reader.readObject();
-        for (Carrier carrier : carriers) {
-            System.out.println(carrier);
-        }
-        return carriers;
-    }
-
-    public static List<Transportation> deserializeTrasnportations(ObjectInputStream reader) throws Exception{
-        System.out.println("Previous transportationes:");
-        transportationService.printAll();
-        System.out.println("After serialization:");
-        List<Transportation> transportations = (List<Transportation>) reader.readObject();
-        for (Transportation transportation : transportations) {
-            System.out.println(transportation);
-        }
-        return transportations;
     }
 }
