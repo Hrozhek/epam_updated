@@ -50,7 +50,6 @@ public class Application {
         }
 
         printStorageData();
-        demoSerialize();
         //demoSaveToFile();
         //demoSearchOperations();
         //demoSortOperations();
@@ -174,64 +173,5 @@ public class Application {
         Transportation tryToFallWithNPE = new Transportation();
         System.out.println("Try to delete transportation " + tryToFallWithNPE.getId());
         transportationService.deleteById(tryToFallWithNPE.getId());
-    }
-    public static void serializeObjects(BaseService service, ObjectOutput output) throws IOException {
-        List<BaseEntity> entities = service.getAll();
-        output.writeObject(entities);
-    }
-
-    public static List<Cargo> deserializeCargos(ObjectInputStream reader) throws Exception{
-        System.out.println("Previous cargoes:");
-        cargoService.printAll();
-        System.out.println("After serialization:");
-        List<Cargo> cargos = (List<Cargo>) reader.readObject();
-        for (Cargo cargo : cargos) {
-            System.out.println(cargo);
-        }
-        return cargos;
-    }
-
-    public static List<Carrier> deserializeCarriers(ObjectInputStream reader) throws Exception{
-        System.out.println("Previous carrieres:");
-        carrierService.printAll();
-        System.out.println("After serialization:");
-        List<Carrier> carriers = (List<Carrier>) reader.readObject();
-        for (Carrier carrier : carriers) {
-            System.out.println(carrier);
-        }
-        return carriers;
-    }
-
-    public static List<Transportation> deserializeTrasnportations(ObjectInputStream reader) throws Exception{
-        System.out.println("Previous transportationes:");
-        transportationService.printAll();
-        System.out.println("After serialization:");
-        List<Transportation> transportations = (List<Transportation>) reader.readObject();
-        for (Transportation transportation : transportations) {
-            System.out.println(transportation);
-        }
-        return transportations;
-    }
-
-    private static void demoSerialize() {
-        File file = null;
-        try {
-            file = File.createTempFile("hometask14", ".txt");
-            try (ObjectOutput writer = new ObjectOutputStream(new FileOutputStream(file));
-                 ObjectInputStream reader = new ObjectInputStream(new FileInputStream(file))) {
-                serializeObjects(cargoService, writer);
-                deserializeCargos(reader);
-                serializeObjects(carrierService, writer);
-                deserializeCarriers(reader);
-                serializeObjects(transportationService, writer);
-                deserializeTrasnportations(reader);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (file != null) {
-                file.delete();
-            }
-        }
     }
 }
