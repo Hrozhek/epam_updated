@@ -23,7 +23,7 @@ public class SimpleFileSaver {
     CarrierService carrierService;
     TransportationService transportationService;
 
-    File outputFile = new File("resources/hometask13/outfile.txt");
+    File outputFile = new File("main/resources/hometask14/outfile.txt");
 
     public void setCargoService(CargoService cargoService) {
         this.cargoService = cargoService;

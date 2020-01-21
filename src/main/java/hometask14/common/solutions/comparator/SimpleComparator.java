@@ -11,7 +11,7 @@ public final class SimpleComparator {
 
             if (s1 == null && s2 == null) {
                 return 0;
-            } else if (s1 != null) {
+            } else if (s1 != null && s2 != null) {
                 return s1.compareTo(s2);
             } else {
                 return -1;
@@ -26,7 +26,7 @@ public final class SimpleComparator {
 
             if (l1 == null && l2 == null) {
                 return 0;
-            } else if (l1 != null) {
+            } else if (l1 != null && l2 != null) {
                 return l1.compareTo(l2);
             } else {
                 return -1;

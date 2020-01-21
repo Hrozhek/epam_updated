@@ -26,7 +26,7 @@ import static hometask14.common.solutions.utils.xml.dom.XmlDomUtils.getOnlyEleme
 
 public class XmlDomFileDataInitor extends BaseFileInitor {
 
-    private static final String FILE = "resources/hometask13/inputxml.xml";
+    private static final String FILE = "src/main/resources/hometask13/inputxml.xml";
 
 
     @Override

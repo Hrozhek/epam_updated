@@ -17,7 +17,7 @@ import java.util.*;
 
 public class XmlSaxFileDataInitor extends BaseFileInitor {
 
-    private static final String FILE = "resources/hometask13/inputxml.xml";
+    private static final String FILE = "src/main/resources/hometask13/inputxml.xml";
 
 
     @Override
@@ -48,7 +48,7 @@ public class XmlSaxFileDataInitor extends BaseFileInitor {
     }
 
     private File getFileWithInitData() throws IOException {
-        return FileUtils.createFileFromResource("initdata", "hometask13", FILE);
+        return FileUtils.createFileFromResource("initdata", "hometask14", FILE);
     }
 
 }

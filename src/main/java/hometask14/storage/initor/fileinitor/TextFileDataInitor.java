@@ -32,7 +32,7 @@ public class TextFileDataInitor implements StorageInitor {
     private static final String whereTransportationsBegin = "TransportationsBegin";
     private static final String whereTransportationsEnd = "TransportationsEnd";
 
-    public File inputFile = new File("resources/hometask12/inputfile.txt");
+    public File inputFile = new File("src/main/resources/hometask13/inputfile.txt");
 
     public TextFileDataInitor() {
         carrierService = ServiceHolder.getInstance().getCarrierService();

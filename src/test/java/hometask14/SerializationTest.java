@@ -8,6 +8,8 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -21,16 +23,16 @@ import java.util.List;
 import static hometask14.common.solutions.comparator.SimpleComparator.LONG_COMPARATOR;
 import static hometask14.common.solutions.comparator.SimpleComparator.STRING_COMPARATOR;
 
-class SerializationTest {
+public class SerializationTest {
     private File tempFile = null;
-    Random randomizer = new Random();
+    private Random randomizer = new Random();
 
-    @BeforeEach
+    @Before
     public void createTempFile() throws IOException {
         tempFile = File.createTempFile("hometask14", ".txt");
     }
 
-    @AfterEach
+    @After
     public void deleteTempFile() {
         if (tempFile != null) {
             tempFile.delete();
