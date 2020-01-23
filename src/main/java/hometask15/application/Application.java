@@ -1,5 +1,6 @@
 package hometask15.application;
 
+import hometask15.common.business.exception.checked.InitStorageException;
 import hometask15.application.serviceholder.ServiceHolder;
 import hometask15.application.serviceholder.StorageType;
 import hometask15.cargo.domain.Cargo;
@@ -8,15 +9,13 @@ import hometask15.cargo.service.CargoSortCondition;
 import hometask15.cargo.service.CargoSortFields;
 import hometask15.carrier.domain.Carrier;
 import hometask15.carrier.service.CarrierService;
-import hometask15.common.business.exception.checked.InitStorageException;
 import hometask15.common.business.files.SimpleFileSaver;
 import hometask15.storage.initor.InitStorageType;
 import hometask15.storage.initor.StorageInitor;
-import hometask15.storage.initor.fileinitor.MultithreadFileInitor;
+import hometask15.storage.initor.fileinitor.multithread.MultithreadFileInitor;
 import hometask15.transportation.domain.Transportation;
 import hometask15.transportation.service.TransportationService;
 
-import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
@@ -39,17 +38,17 @@ public class Application {
         cargoService = ServiceHolder.getInstance().getCargoService();
         carrierService = ServiceHolder.getInstance().getCarrierService();
 
-        StorageInitor storageInitor = getStorageInitor(InitStorageType.XML_SAX_FILE);
+        StorageInitor storageInitor = getStorageInitor(InitStorageType.MULTI_THREAD);
+        //StorageInitor storageInitor = getStorageInitor(InitStorageType.XML_SAX_FILE);
         //StorageInitor storageInitor = getStorageInitor(InitStorageType.XML_DOM_FILE);
         //StorageInitor storageInitor = new InMemoryStorageInitor();
         //StorageInitor storageInitor = getStorageInitor(InitStorageType.TEXT_FILE);
         //StorageInitor storageInitor = getStorageInitor(InitStorageType.MEMORY);
-        multiThreadDemo(storageInitor);
-        /*try {
+        try {
             storageInitor.initStorage();
         } catch (InitStorageException e) {
             e.printStackTrace();
-        }*/
+        }
 
         printStorageData();
         //demoSaveToFile();
@@ -58,18 +57,6 @@ public class Application {
         //demoCarrierDeleter(carrierService, transportationService);
     }
 
-    private static void multiThreadDemo(StorageInitor initor) {
-        MultithreadFileInitor initor1 = new MultithreadFileInitor(initor);
-        MultithreadFileInitor initor2 = new MultithreadFileInitor(initor);
-        initor1.parseMultiThread();
-        initor2.parseMultiThread();
-        try {
-            initor1.waitUntilDOne();
-            initor2.waitUntilDOne();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 
     private static void demoSaveToFile() {
         printSeparator();
