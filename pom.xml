@@ -44,6 +44,16 @@
             <artifactId>surefire-junit4</artifactId>
             <version>2.12.4</version>
         </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP-java9ea</artifactId>
+            <version>2.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.198</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.maven.surefire/surefire-junit4 -->
     </dependencies>
     <properties>
