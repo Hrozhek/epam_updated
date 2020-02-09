@@ -8,6 +8,7 @@ import hometask23.cargo.repo.CargoRepo;
 import hometask23.common.solutions.utils.DataBaseUtils;
 
 import java.sql.Timestamp;
+import java.sql.Types;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,13 +37,13 @@ public class CargoDatabaseRepoImpl implements CargoRepo {
                             ClothesCargo clothes = (ClothesCargo) cargo;
                             ps.setString(++i, clothes.getSize());
                             ps.setString(++i, clothes.getMaterial());
-                            ps.setNull(++i, 4);
-                            ps.setNull(++i, 93);
+                            ps.setNull(++i, Types.INTEGER);
+                            ps.setNull(++i, Types.TIMESTAMP);
                             break;
                         case FOOD:
                             FoodCargo food = (FoodCargo) cargo;
-                            ps.setNull(++i, 12);
-                            ps.setNull(++i, 12);
+                            ps.setNull(++i, Types.VARCHAR);
+                            ps.setNull(++i, Types.VARCHAR);
                             ps.setInt(++i, food.getStoreTemperature());
                             ps.setTimestamp(++i, Timestamp.valueOf(food.getExpirationDate()));
                     }
